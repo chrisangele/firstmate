@@ -459,7 +459,18 @@ test_matrix_muse_idle_hint_row_is_furniture() {
   # and must still read pending.
   assert_screen "a wrapped row that is not a hint stays pending" pending \
     "$CAPS_STYLED_NOID" "$glyph"$'\n'"and then rename the module"
-  pass "matrix: a row that is nothing but an idle hint bounds the wrap region; real wrapped input still reads pending"
+  assert_screen "a fleet placeholder prefix in bright wrapped input stays pending" pending \
+    "$CAPS_STYLED_NOID" "$glyph"$'\n'"${ESC}[97mAsk anything... please investigate${ESC}[0m"
+  for hint in 'Type @ to search and insert workspace file paths' '/loop 10m <prompt> schedules a recurring prompt'; do
+    assert_screen "a whole Muse hint bounds the wrap region" empty \
+      "$CAPS_STYLED_NOID" "$glyph"$'\n'"${ESC}[97m${hint}${ESC}[0m"
+    assert_screen "a Muse hint with appended draft text stays pending" pending \
+      "$CAPS_STYLED_NOID" "$glyph"$'\n'"${ESC}[97m${hint} please investigate${ESC}[0m"
+  done
+  out=$(FM_COMPOSER_IDLE_RE='^Ask anything.*$' fm_composer_classify_screen \
+    "$CAPS_STYLED_NOID" "$glyph"$'\n'"${ESC}[97mAsk anything... please investigate${ESC}[0m")
+  [ "$out" = pending ] || fail "fleet placeholder overrides must not bound wrapped input, got '$out'"
+  pass "matrix: whole Muse hints bound the wrap region; real wrapped input still reads pending"
 }
 
 test_matrix_cursor_reverse_video_placeholder_remnant() {

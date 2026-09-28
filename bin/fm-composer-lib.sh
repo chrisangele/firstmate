@@ -490,12 +490,11 @@ FM_COMPOSER_SHELL_PROMPT_GLYPHS=$(printf '%s\n' '>' '$' '%' '#')
 # binary's catalogue, which is the same source the pane renders from. That
 # catalogue holds roughly twenty entries, so a hint outside these two can still
 # be drawn - see docs/verification/runtime-backends.md.
-# This set has two consumers: the idle-placeholder decisions below, and
-# _fm_composer_row_is_idle_hint, which makes a row that is nothing but one of
-# these hints bound a bare composer's wrap region instead of reading as typed
-# input. FM_COMPOSER_IDLE_RE overrides for an unverified harness; matching is
-# case-insensitive.
-FM_COMPOSER_IDLE_RE_DEFAULT='^Type a message\.\.\.$|^Ask anything(\.\.\.|…)|^Plan, search, build anything$|^Add a follow-up$|^Ask Devin to build features, fix bugs, or work on your code$|^Type @ to search and insert workspace file paths$|^/loop 10m <prompt> schedules a recurring prompt$'
+# The two Muse hints also bound a bare composer's wrap region through
+# _fm_composer_row_is_idle_hint. FM_COMPOSER_IDLE_RE overrides only the
+# idle-placeholder decisions; matching is case-insensitive.
+FM_COMPOSER_MUSE_HINT_RE='^Type @ to search and insert workspace file paths$|^/loop 10m <prompt> schedules a recurring prompt$'
+FM_COMPOSER_IDLE_RE_DEFAULT='^Type a message\.\.\.$|^Ask anything(\.\.\.|…)|^Plan, search, build anything$|^Add a follow-up$|^Ask Devin to build features, fix bugs, or work on your code$|'"$FM_COMPOSER_MUSE_HINT_RE"
 
 # Opencode draws a mode/model footer line INSIDE its left-bar composer
 # ("Build · GPT-5.5 Fast OpenAI · high"). It is composer furniture, not typed
@@ -1280,19 +1279,14 @@ _fm_composer_row_is_pi_status() {  # <trimmed-row>
 }
 
 # _fm_composer_row_is_idle_hint: 0 when the WHOLE trimmed row is one of the
-# fleet idle placeholder hints (FM_COMPOSER_IDLE_RE_DEFAULT above, whose
-# entries are anchored). A harness that rotates hints around its empty
-# composer draws them on their own rows below the prompt glyph, where a bare
-# composer's wrap region would otherwise swallow them and report an idle pane
-# `pending` - the false verdict that skipped three doorbells on a live muse
-# mate, the same defect omp's status row above was taught to bound. Those
-# hints are drawn at normal intensity, so ghost stripping cannot see them and
-# only this shape test can.
+# two Muse 1.3 hints (FM_COMPOSER_MUSE_HINT_RE above). Muse draws them at
+# normal intensity on their own rows below the prompt glyph, bounding a bare
+# composer's wrap region independently of the fleet placeholder override.
 _fm_composer_row_is_idle_hint() {  # <row>
   local row=$1
   fm_composer_normalize_trim_var row
   [ -n "$row" ] || return 1
-  fm_composer_idle_matches "$row" "${FM_COMPOSER_IDLE_RE:-$FM_COMPOSER_IDLE_RE_DEFAULT}" insensitive
+  fm_composer_idle_matches "$row" "$FM_COMPOSER_MUSE_HINT_RE" insensitive
 }
 
 # _fm_composer_row_is_braille_furniture: 0 when the row is non-blank and its
