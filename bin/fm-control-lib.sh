@@ -104,24 +104,11 @@ fm_control_harness_family() {  # <recorded-harness>
   esac
 }
 
-# Which task kinds an adapter is verified to run. muse, gemini, rovo, agy, and devin
-# are crewmate/scout adapters only: none has a primary supervision protocol,
-# and bin/fm-spawn.sh refuses a --secondmate launch on any of them. The control
-# plane asks this BEFORE it stops anything, so an incompatible relaunch target is
-# refused while the current agent is still running rather than after it has
-# been stopped.
-# config/unverified-secondmate-harness is the operator's written acceptance, for
-# ONE named home, of an adapter that is not verified for the secondmate kind. It
-# does not make the adapter verified and closes none of the gaps above; it only
-# records that an unproven mate is accepted rather than none. It widens the
-# muse/gemini/agy row only, never rovo or devin, matching what bin/fm-spawn.sh will
-# actually launch, so the two owners cannot disagree about what may start.
-# The flag is read ONLY from an explicit FM_HOME and never from the working
-# directory. This predicate is otherwise pure, and a cwd fallback made it answer
-# differently depending on where it was called from - which silently let one
-# home's acceptance widen the capability table for every caller that had not
-# named a home at all. With no FM_HOME there is no home to have accepted
-# anything, so it refuses.
+# Which task kinds an adapter may launch. The control plane asks BEFORE it
+# stops anything, preserving the current agent when the replacement is refused.
+# docs/configuration.md "Unverified secondmate harness" owns acceptance policy.
+# Require an explicit home: a cwd fallback would let another home's acceptance
+# silently widen this capability answer. Keep this gate aligned with fm-spawn.
 fm_control_harness_supports_kind() {  # <harness> <kind>
   local harness=${1-} kind=${2-}
   fm_control_harness_supported "$harness" || return 1

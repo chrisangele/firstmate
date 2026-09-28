@@ -1,6 +1,5 @@
 Mode: Muse foreground checkpoint.
 
-Added 2026-09-15 on the captain's explicit order to run the ProspectPilot secondmates on Muse Spark.
 Muse is not a verified primary harness: it has no firstmate Stop-hook rewake, so supervision here must never depend on a background task or a hook waking the model.
 It reuses the harness-agnostic foreground checkpoint that Codex uses.
 

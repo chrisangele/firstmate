@@ -30,9 +30,9 @@ unset _FM_SESSION_LOCK_LIB_DIR
 # muse is anchored the same way bin/fm-harness.sh anchors it: the launcher
 # ~/.local/bin/muse execs ~/.local/bin/muse-bin-<version>, so the live process
 # basename is `muse` or starts with `muse-bin-`, never a bare *muse* substring
-# (musescore, amuse). Added 2026-09-15 on the captain's explicit order to run the
-# ProspectPilot secondmates on muse; without it every muse session start refused
-# the home lock with "cannot locate harness process in ancestry".
+# (musescore, amuse). This lets a Muse secondmate own its home lock without
+# admitting unrelated process names; tests/fm-session-lock-ancestry.test.sh
+# covers both launcher and versioned identities plus decoys.
 FM_HARNESS_RE='claude|codex|opencode|grok|kimi|^pi$|^pi-signed$|^omp$|^muse$|^muse-bin-'
 
 # The same harnesses as exact executable names. Keep in sync with

@@ -722,7 +722,7 @@ On Zellij, cmux, and Orca a typed-plane Cursor send (a harness-native invocation
 muse is verified for crewmate and scout launches ONLY, and `fm-spawn.sh` refuses it for a secondmate unless that home carries the acceptance flag below, because muse ships no usable hook surface for a primary session's turn-end supervision; [`docs/verification/muse.md`](verification/muse.md) owns that evidence.
 muse also needs a worker-reachable credential before spawning, and the portable fleet path is the `<config>/muse/auth.json` credential stored by `muse login`, because a caller-only `META_API_KEY` does not cross a long-lived backend daemon.
 
-gemini is likewise refused for secondmates, under the same acceptance flag, because it has no primary supervision protocol; [its adapter reference](../.agents/skills/harness-adapters/references/harness/gemini.md) owns the credential precondition, canonical-launch wiring, and raw-launch limitations.
+gemini is likewise refused for secondmates unless the same acceptance flag is present, because it has no primary supervision protocol; [its adapter reference](../.agents/skills/harness-adapters/references/harness/gemini.md) owns the credential precondition, canonical-launch wiring, and raw-launch limitations.
 rovo is likewise verified for crewmate and scout launches ONLY, refused for a secondmate for the same reason - no turn-end hook and no primary supervision protocol - and the acceptance flag below never widens it; [`docs/verification/rovo.md`](verification/rovo.md) owns that evidence, including the OAuth token's silent background refresh from a stored refresh token and both tmux and herdr pane liveness (herdr placement is verified live, with a Herdr-side agent-detection gap left open for recovery classification).
 
 agy is likewise verified for crewmate and scout launches ONLY, refused for a secondmate for the same reason - no hook surface and no primary supervision protocol - and widened only by the same acceptance flag; [`docs/verification/agy.md`](verification/agy.md) owns that evidence, including the spawn-time worktree trust pre-registration through `bin/fm-agy-trust.sh` and Herdr's native agy pane recognition.
@@ -795,13 +795,16 @@ For omp secondmate launches, `fm-spawn.sh` passes no `-e` at all: omp auto-disco
 
 ## Unverified secondmate harness (config/unverified-secondmate-harness)
 
-The optional local, gitignored `config/unverified-secondmate-harness` records the captain's written acceptance, for THIS home only, of a secondmate on an adapter that is not verified for that kind.
+The optional local, gitignored `config/unverified-secondmate-harness` records the captain's written acceptance, for the launching parent home only, of a secondmate on an adapter that is not verified for that kind.
 Only the file's presence is read; its contents are ignored.
 It widens muse, gemini, and agy alone, never rovo or devin, in both `bin/fm-spawn.sh` and the `bin/fm-control-lib.sh` capability predicate the control plane asks before it stops anything, so the launch owner and the relaunch gate cannot disagree about what may start.
 A launch it permits prints a warning naming the accepted risk instead of proceeding silently.
-It makes nothing verified and closes none of the gaps the refusal exists for: such a mate still has no primary supervision protocol to rely on and must be proven by hand once it is up.
+It does not establish verified secondmate support; supervision must still be proven by hand after launch.
+Muse receives the [foreground-checkpoint protocol](supervision-protocols/muse.md), which does not rely on Stop-hook rewakes; Gemini and AGY have no harness-specific supervision snippet.
+The presence of a Muse snippet and session-lock support is not evidence of end-to-end secondmate supervision.
 It is a file rather than an environment variable because an automatic liveness relaunch carries none of an interactive session's environment, so an environment flag would bring a dead mate back only while a human happened to be driving.
-It is read only from an explicit `FM_HOME` and never from the working directory, so one home's acceptance can never authorize a launch for a different home; with no home named, nothing has accepted anything and the gate refuses.
+The control capability predicate requires an explicit `FM_HOME` and never reads the flag from the working directory; without a named home it refuses the exception.
+Spawn reads the flag from its resolved `FM_HOME`, whose resolution is owned by [`bin/fm-spawn.sh`](../bin/fm-spawn.sh), not from the target secondmate home.
 It is not inherited into secondmate homes, for the same reason `config/secondmate-harness` is not: secondmates do not launch secondmates.
 
 ## Claude permission mode (config/claude-permission-mode)
