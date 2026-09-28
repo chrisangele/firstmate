@@ -64,8 +64,9 @@
 #                structural edges, and by the FURNITURE rows a harness draws
 #                directly below its composer - omp's status row,
 #                braille-only animation rows, and a row that is nothing but
-#                one of the idle placeholder hints (all declared once below,
-#                next to each other) - none of which is ever typed input.
+#                one of the two whole-row Muse hints declared below in
+#                FM_COMPOSER_MUSE_HINT_RE. Fleet placeholder matches and
+#                FM_COMPOSER_IDLE_RE overrides do not bound this region.
 #   left-bar   - opencode: rows prefixed by a heavy left bar `┃` with no
 #                closing border, holding the idle hint, blank rows, and a
 #                mode/model footer line.
@@ -488,8 +489,9 @@ FM_COMPOSER_SHELL_PROMPT_GLYPHS=$(printf '%s\n' '>' '$' '%' '#')
 # empty composer, and the two entries here are the ones seen unrung on a live
 # muse mate; they are taken byte-for-byte from the installed Muse 1.3.0-R3401.1
 # binary's catalogue, which is the same source the pane renders from. That
-# catalogue holds roughly twenty entries, so a hint outside these two can still
-# be drawn - see docs/verification/runtime-backends.md.
+# catalogue holds roughly twenty entries, so an unrecognized hint can still
+# read pending. Widening this set also accepts matching human input as empty;
+# keep additions deliberate. Live evidence: docs/verification/runtime-backends.md.
 # The two Muse hints also bound a bare composer's wrap region through
 # _fm_composer_row_is_idle_hint. FM_COMPOSER_IDLE_RE overrides only the
 # idle-placeholder decisions; matching is case-insensitive.
