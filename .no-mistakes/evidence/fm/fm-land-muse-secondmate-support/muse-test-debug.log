@@ -1,0 +1,443 @@
++ set -u
+++ dirname tests/fm-muse-harness.test.sh
++ . tests/lib.sh
+++ '[' -n '' ']'
+++ FM_TEST_LIB_SOURCED=1
+++ umask 022
++++ dirname tests/lib.sh
+++ . tests/git-config-helpers.sh
++++ export GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1
++++ GIT_CONFIG_GLOBAL=/dev/null
++++ GIT_CONFIG_NOSYSTEM=1
+++ export FM_GATE_REFUSE_BYPASS=1
+++ FM_GATE_REFUSE_BYPASS=1
+++ export FM_TEST_SEAM=1
+++ FM_TEST_SEAM=1
+++ unset FM_TASK_ID
+++ unset TASKS_AXI_FILE TASKS_AXI_BACKEND
+++++ dirname tests/lib.sh
++++ cd tests/..
++++ pwd
+++ ROOT=/Users/christian/.no-mistakes/worktrees/c74c3d72ba26/01M3N30BCPNWYDM351D2ZGG6XF
+++ FM_TEST_CLEANUP_DIRS=()
++++ mktemp /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//.fm-test-cleanup.32454.XXXXXX
+++ FM_TEST_CLEANUP_REGISTRY=/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//.fm-test-cleanup.32454.eABdWk
++++ fm_test_pid_identity 32454
++++ local pid=32454
++++ FM_STATE_OVERRIDE=/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/
++++ bash -c '. "$1"; fm_pid_identity "$2"' _ /Users/christian/.no-mistakes/worktrees/c74c3d72ba26/01M3N30BCPNWYDM351D2ZGG6XF/bin/fm-wake-lib.sh 32454
+++ FM_TEST_OWNER_IDENTITY='Tue Sep 29 00:46:32 2026     bash -x tests/fm-muse-harness.test.sh'
++++ mktemp /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//.fm-test-procevent.32454.XXXXXX
+++ FM_TEST_PROCEVENT_REGISTRY=/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//.fm-test-procevent.32454.Rkwh61
++++ mktemp /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//.fm-test-watcher.32454.XXXXXX
+++ FM_TEST_WATCHER_REGISTRY=/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//.fm-test-watcher.32454.6oIWlH
+++ FM_TEST_STUB_MAX_BLOCK_SECONDS=120
+++ export FM_TEST_STUB_MAX_BLOCK_SECONDS
+++ trap fm_test_cleanup EXIT
+++ trap 'fm_test_cleanup; exit 130' INT
+++ trap 'fm_test_cleanup; exit 143' TERM
+++ trap 'fm_test_cleanup; exit 129' HUP
+++ trap 'fm_test_cleanup; exit 131' QUIT
+++ FM_TEST_ORPHAN_MAX_AGE_SECONDS=3600
+++ '[' 0 '!=' 1 ']'
+++ fm_test_reap_orphans
+++ local marker dir mtime now owner_pid owner_identity current_identity
++++ date +%s
+++ now=1790635592
+++ for marker in '"${TMPDIR:-/tmp}"/fm-*/.fm-test-fixture'
+++ '[' -e /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//fm-control-auth.Kdyi0l/.fm-test-fixture ']'
++++ sed -n 1p /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//fm-control-auth.Kdyi0l/.fm-test-fixture
+++ owner_pid=80312
++++ sed -n '2,$p' /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//fm-control-auth.Kdyi0l/.fm-test-fixture
+++ owner_identity='Tue Sep 29 00:32:11 2026     bash tests/fm-control-relaunch.test.sh'
+++ case "$owner_pid" in
++++ fm_test_pid_identity 80312
+++ current_identity=
+++ current_identity=
+++ '[' -n 'Tue Sep 29 00:32:11 2026     bash tests/fm-control-relaunch.test.sh' ']'
+++ '[' '' = 'Tue Sep 29 00:32:11 2026     bash tests/fm-control-relaunch.test.sh' ']'
++++ stat -c %Y /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//fm-control-auth.Kdyi0l/.fm-test-fixture
++++ stat -f %m /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//fm-control-auth.Kdyi0l/.fm-test-fixture
+++ mtime=1790634768
+++ '[' 824 -ge 3600 ']'
+++ continue
+++ for marker in '"${TMPDIR:-/tmp}"/fm-*/.fm-test-fixture'
+++ '[' -e /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//fm-control-auth.vE4Bbq/.fm-test-fixture ']'
++++ sed -n 1p /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//fm-control-auth.vE4Bbq/.fm-test-fixture
+++ owner_pid=57575
++++ sed -n '2,$p' /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//fm-control-auth.vE4Bbq/.fm-test-fixture
+++ owner_identity='Tue Sep 29 00:40:15 2026     bash tests/fm-control-relaunch.test.sh'
+++ case "$owner_pid" in
++++ fm_test_pid_identity 57575
+++ current_identity=
+++ current_identity=
+++ '[' -n 'Tue Sep 29 00:40:15 2026     bash tests/fm-control-relaunch.test.sh' ']'
+++ '[' '' = 'Tue Sep 29 00:40:15 2026     bash tests/fm-control-relaunch.test.sh' ']'
++++ stat -c %Y /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//fm-control-auth.vE4Bbq/.fm-test-fixture
++++ stat -f %m /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//fm-control-auth.vE4Bbq/.fm-test-fixture
+++ mtime=1790635252
+++ '[' 340 -ge 3600 ']'
+++ continue
++ unset CLAUDECODE PI_CODING_AGENT FM_PI_HARNESS GROK_AGENT CURSOR_AGENT CURSOR_INVOKED_AS
++ SPAWN=/Users/christian/.no-mistakes/worktrees/c74c3d72ba26/01M3N30BCPNWYDM351D2ZGG6XF/bin/fm-spawn.sh
++ TEARDOWN=/Users/christian/.no-mistakes/worktrees/c74c3d72ba26/01M3N30BCPNWYDM351D2ZGG6XF/bin/fm-teardown.sh
++ HARNESS=/Users/christian/.no-mistakes/worktrees/c74c3d72ba26/01M3N30BCPNWYDM351D2ZGG6XF/bin/fm-harness.sh
+++ fm_test_tmproot fm-muse-harness
+++ local prefix=fm-muse-harness root tmp_base
+++ tmp_base=/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/
+++ tmp_base=/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T
++++ mktemp -d /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.XXXXXX
+++ root=/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA
++++ cd -P -- /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA
++++ pwd -P
+++ root=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA
+++ printf '%s\n%s\n' 32454 'Tue Sep 29 00:46:32 2026     bash -x tests/fm-muse-harness.test.sh'
+++ printf '%s\n' /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA
+++ printf '%s\n' /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA
++ TMP_ROOT=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA
++ test_spawn_environment_allowlist_credential_preflight
++ local setting rec case_dir home proj wt fakebin id out status
++ for setting in withheld allowed stored
+++ make_spawn_case allowlist-withheld
+++ local name=allowlist-withheld case_dir home proj wt fakebin id
+++ case_dir=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld
+++ home=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home
+++ proj=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project
+++ wt=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/wt
++++ make_spawn_fakebin /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake
++++ local dir=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake fakebin
+++++ fm_fakebin /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake
+++++ local dir=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake fakebin=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin
+++++ mkdir -p /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin
+++++ printf '%s\n' /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin
++++ fakebin=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin
++++ cat
++++ chmod +x /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin/tmux
+++++ command -v bash
++++ cp /bin/bash /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin/muse-bin-test-version
++++ cat
++++ chmod +x /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin/muse
++++ fm_fake_exit0 /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin treehouse gh-axi gh
++++ local fakebin=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin tool
++++ shift
++++ for tool in '"$@"'
++++ cat
++++ chmod +x /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin/treehouse
++++ for tool in '"$@"'
++++ cat
++++ chmod +x /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin/gh-axi
++++ for tool in '"$@"'
++++ cat
++++ chmod +x /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin/gh
++++ printf '%s\n' /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin
+++ fakebin=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin
+++ id=muse-allowlist-withheld-x1
+++ mkdir -p /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home/data/muse-allowlist-withheld-x1 /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home/projects /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home/state /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home/config /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home/xdgconfig /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home/xdgdata
+++ cat
+++ fm_git_worktree /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/wt fm/muse-allowlist-withheld-x1
+++ local repo=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project worktree=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/wt branch=fm/muse-allowlist-withheld-x1
+++ fm_git_init_commit /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project
+++ local dir=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project
+++ mkdir -p /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project
+++ git -C /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project init -q -b main
++++ basename /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project
+++ printf '# %s\n' project
+++ git -C /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project add README.md
+++ git -C /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project -c 'user.name=Firstmate Tests' -c user.email=tests@example.invalid commit -qm initial
+++ fm_git_add_origin /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project.origin.git
+++ local repo=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project remote=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project.origin.git remote_abs
+++ git clone --quiet --bare /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project.origin.git
++++ cd /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project.origin.git
++++ pwd
+++ remote_abs=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project.origin.git
+++ git -C /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project remote add origin file:///private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project.origin.git
+++ git -C /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project worktree add --quiet -b fm/muse-allowlist-withheld-x1 /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/wt
+++ touch /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home/state/.last-watcher-beat
+++ printf '%s\n' '/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/wt|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin|muse-allowlist-withheld-x1'
++ rec='/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/wt|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin|muse-allowlist-withheld-x1'
++ IFS='|'
++ read -r case_dir home proj wt fakebin id
++ :
++ case "$setting" in
+++ run_muse_spawn /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/wt /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin muse-allowlist-withheld-x1 --mode no-mistakes --yolo off
+++ local home=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home proj=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project wt=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/wt fakebin=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin id=muse-allowlist-withheld-x1
+++ shift 5
+++ FM_ROOT_OVERRIDE=
+++ FM_HOME=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home
+++ FM_STATE_OVERRIDE=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home/state
+++ FM_DATA_OVERRIDE=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home/data
+++ FM_PROJECTS_OVERRIDE=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home/projects
+++ FM_CONFIG_OVERRIDE=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home/config
+++ FM_SPAWN_NO_GUARD=1
+++ FM_FAKE_PANE_PATH=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/wt
+++ TMUX=fake,1,0
+++ FM_FAKE_LAUNCH_LOG=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home/launch.log
+++ FM_FAKE_MUSE_EXECUTABLE=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin/muse
+++ FM_FAKE_MUSE_VERSIONED=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin/muse-bin-test-version
+++ FM_FAKE_HARNESS_PROBE=/Users/christian/.no-mistakes/worktrees/c74c3d72ba26/01M3N30BCPNWYDM351D2ZGG6XF/bin/fm-harness.sh
+++ FM_FAKE_EXECUTE_MUSE_LAUNCH=
+++ FM_FAKE_HARNESS_RESULT=
+++ FM_FAKE_WORKER_META_KEY=present
+++ META_API_KEY=test-key
+++ XDG_CONFIG_HOME=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home/xdgconfig
+++ XDG_DATA_HOME=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home/xdgdata
+++ PATH=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/fake/fakebin:/Users/christian/.cargo/bin:/Users/christian/.bun/bin:/Users/christian/.railway/bin:/Users/christian/.iterm2:/Users/christian/.antigravity/antigravity/bin:/Users/christian/.local/node/bin:/Users/christian/.local/bin:/Library/Frameworks/Python.framework/Versions/3.12/bin:/opt/homebrew/opt/python@3.12/libexec/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/christian/.codex/packages/standalone/releases/0.155.1-aarch64-apple-darwin/codex-path:/Users/christian/bin:/Users/christian/.grok/bin:/Users/christian/.local/bin:/Users/christian/.local/bin:/Users/christian/.local/bin:/Users/christian/.local/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/opt/homebrew/bin:/Users/christian/.cargo/bin:/Users/christian/.bun/bin:/Users/christian/.railway/bin:/Users/christian/.iterm2:/Users/christian/.antigravity/antigravity/bin:/Users/christian/.local/node/bin:/Users/christian/.local/bin:/Library/Frameworks/Python.framework/Versions/3.12/bin:/opt/homebrew/opt/python@3.12/libexec/bin:/opt/homebrew/sbin:/Users/christian/.codex/tmp/arg0/codex-arg0HNICax:/Users/christian/.codex/packages/standalone/releases/0.155.1-aarch64-apple-darwin/codex-path:/Users/christian/bin:/Users/christian/.grok/bin:/Users/christian/.claude-acct6/plugins/cache/typesafe-ai/typesafe/0.5.7/bin:/Users/christian/.claude-acct6/skills/humanizer/bin:/Users/christian/firstmate/.claude/skills/firstmate-calm/bin:/Users/christian/go/bin:/usr/local/sbin
+++ /Users/christian/.no-mistakes/worktrees/c74c3d72ba26/01M3N30BCPNWYDM351D2ZGG6XF/bin/fm-spawn.sh muse-allowlist-withheld-x1 /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/project muse --mode no-mistakes --yolo off
++ out='error: muse has no worker-reachable credential; META_API_KEY is set for fm-spawn but cannot be proven present in the tmux worker environment. Store the fleet credential at '\''/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home/xdgconfig/muse/auth.json'\'' with '\''muse login'\'' or '\''muse auth set --api-key-stdin'\''. The secret will not be copied into the launch command.'
++ status=1
++ '[' withheld = withheld ']'
++ expect_code 1 1 'withheld Muse key must not satisfy preflight'
++ local expected=1 actual=1 'label=withheld Muse key must not satisfy preflight'
++ '[' 1 = 1 ']'
++ assert_contains 'error: muse has no worker-reachable credential; META_API_KEY is set for fm-spawn but cannot be proven present in the tmux worker environment. Store the fleet credential at '\''/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home/xdgconfig/muse/auth.json'\'' with '\''muse login'\'' or '\''muse auth set --api-key-stdin'\''. The secret will not be copied into the launch command.' 'no worker-reachable credential' 'missing credential explanation'
++ case "$1" in
++ :
++ assert_absent /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home/state/muse-allowlist-withheld-x1.meta 'withheld Muse key still launched a worker'
++ '[' '!' -e /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-withheld/home/state/muse-allowlist-withheld-x1.meta ']'
++ for setting in withheld allowed stored
+++ make_spawn_case allowlist-allowed
+++ local name=allowlist-allowed case_dir home proj wt fakebin id
+++ case_dir=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed
+++ home=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home
+++ proj=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project
+++ wt=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/wt
++++ make_spawn_fakebin /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake
++++ local dir=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake fakebin
+++++ fm_fakebin /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake
+++++ local dir=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake fakebin=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin
+++++ mkdir -p /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin
+++++ printf '%s\n' /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin
++++ fakebin=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin
++++ cat
++++ chmod +x /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin/tmux
+++++ command -v bash
++++ cp /bin/bash /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin/muse-bin-test-version
++++ cat
++++ chmod +x /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin/muse
++++ fm_fake_exit0 /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin treehouse gh-axi gh
++++ local fakebin=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin tool
++++ shift
++++ for tool in '"$@"'
++++ cat
++++ chmod +x /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin/treehouse
++++ for tool in '"$@"'
++++ cat
++++ chmod +x /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin/gh-axi
++++ for tool in '"$@"'
++++ cat
++++ chmod +x /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin/gh
++++ printf '%s\n' /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin
+++ fakebin=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin
+++ id=muse-allowlist-allowed-x1
+++ mkdir -p /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/data/muse-allowlist-allowed-x1 /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/projects /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/state /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/config /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/xdgconfig /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/xdgdata
+++ cat
+++ fm_git_worktree /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/wt fm/muse-allowlist-allowed-x1
+++ local repo=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project worktree=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/wt branch=fm/muse-allowlist-allowed-x1
+++ fm_git_init_commit /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project
+++ local dir=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project
+++ mkdir -p /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project
+++ git -C /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project init -q -b main
++++ basename /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project
+++ printf '# %s\n' project
+++ git -C /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project add README.md
+++ git -C /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project -c 'user.name=Firstmate Tests' -c user.email=tests@example.invalid commit -qm initial
+++ fm_git_add_origin /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project.origin.git
+++ local repo=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project remote=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project.origin.git remote_abs
+++ git clone --quiet --bare /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project.origin.git
++++ cd /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project.origin.git
++++ pwd
+++ remote_abs=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project.origin.git
+++ git -C /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project remote add origin file:///private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project.origin.git
+++ git -C /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project worktree add --quiet -b fm/muse-allowlist-allowed-x1 /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/wt
+++ touch /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/state/.last-watcher-beat
+++ printf '%s\n' '/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/wt|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin|muse-allowlist-allowed-x1'
++ rec='/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/wt|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin|muse-allowlist-allowed-x1'
++ IFS='|'
++ read -r case_dir home proj wt fakebin id
++ :
++ case "$setting" in
++ printf 'META_API_KEY\n'
+++ run_muse_spawn /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/wt /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin muse-allowlist-allowed-x1 --mode no-mistakes --yolo off
+++ local home=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home proj=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project wt=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/wt fakebin=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin id=muse-allowlist-allowed-x1
+++ shift 5
+++ FM_ROOT_OVERRIDE=
+++ FM_HOME=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home
+++ FM_STATE_OVERRIDE=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/state
+++ FM_DATA_OVERRIDE=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/data
+++ FM_PROJECTS_OVERRIDE=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/projects
+++ FM_CONFIG_OVERRIDE=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/config
+++ FM_SPAWN_NO_GUARD=1
+++ FM_FAKE_PANE_PATH=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/wt
+++ TMUX=fake,1,0
+++ FM_FAKE_LAUNCH_LOG=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/launch.log
+++ FM_FAKE_MUSE_EXECUTABLE=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin/muse
+++ FM_FAKE_MUSE_VERSIONED=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin/muse-bin-test-version
+++ FM_FAKE_HARNESS_PROBE=/Users/christian/.no-mistakes/worktrees/c74c3d72ba26/01M3N30BCPNWYDM351D2ZGG6XF/bin/fm-harness.sh
+++ FM_FAKE_EXECUTE_MUSE_LAUNCH=
+++ FM_FAKE_HARNESS_RESULT=
+++ FM_FAKE_WORKER_META_KEY=present
+++ META_API_KEY=test-key
+++ XDG_CONFIG_HOME=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/xdgconfig
+++ XDG_DATA_HOME=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/xdgdata
+++ PATH=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/fake/fakebin:/Users/christian/.cargo/bin:/Users/christian/.bun/bin:/Users/christian/.railway/bin:/Users/christian/.iterm2:/Users/christian/.antigravity/antigravity/bin:/Users/christian/.local/node/bin:/Users/christian/.local/bin:/Library/Frameworks/Python.framework/Versions/3.12/bin:/opt/homebrew/opt/python@3.12/libexec/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/christian/.codex/packages/standalone/releases/0.155.1-aarch64-apple-darwin/codex-path:/Users/christian/bin:/Users/christian/.grok/bin:/Users/christian/.local/bin:/Users/christian/.local/bin:/Users/christian/.local/bin:/Users/christian/.local/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/opt/homebrew/bin:/Users/christian/.cargo/bin:/Users/christian/.bun/bin:/Users/christian/.railway/bin:/Users/christian/.iterm2:/Users/christian/.antigravity/antigravity/bin:/Users/christian/.local/node/bin:/Users/christian/.local/bin:/Library/Frameworks/Python.framework/Versions/3.12/bin:/opt/homebrew/opt/python@3.12/libexec/bin:/opt/homebrew/sbin:/Users/christian/.codex/tmp/arg0/codex-arg0HNICax:/Users/christian/.codex/packages/standalone/releases/0.155.1-aarch64-apple-darwin/codex-path:/Users/christian/bin:/Users/christian/.grok/bin:/Users/christian/.claude-acct6/plugins/cache/typesafe-ai/typesafe/0.5.7/bin:/Users/christian/.claude-acct6/skills/humanizer/bin:/Users/christian/firstmate/.claude/skills/firstmate-calm/bin:/Users/christian/go/bin:/usr/local/sbin
+++ /Users/christian/.no-mistakes/worktrees/c74c3d72ba26/01M3N30BCPNWYDM351D2ZGG6XF/bin/fm-spawn.sh muse-allowlist-allowed-x1 /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/project muse --mode no-mistakes --yolo off
++ out='warning: /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/data/muse-allowlist-allowed-x1/launch-brief.md records no ship branch; defaulting to legacy branch fm/muse-allowlist-allowed-x1
+warning: /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/data/muse-allowlist-allowed-x1/launch-brief.md records no delivery contract line (scaffolded before ship briefs recorded one); launching on the explicit --mode no-mistakes - confirm its definition of done matches
+spawned muse-allowlist-allowed-x1 harness=muse kind=ship mode=no-mistakes yolo=off window=firstmate:fm-muse-allowlist-allowed-x1 worktree=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/wt'
++ status=0
++ '[' allowed = withheld ']'
++ expect_code 0 0 'Muse allowed credential must remain usable: warning: /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/data/muse-allowlist-allowed-x1/launch-brief.md records no ship branch; defaulting to legacy branch fm/muse-allowlist-allowed-x1
+warning: /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/data/muse-allowlist-allowed-x1/launch-brief.md records no delivery contract line (scaffolded before ship briefs recorded one); launching on the explicit --mode no-mistakes - confirm its definition of done matches
+spawned muse-allowlist-allowed-x1 harness=muse kind=ship mode=no-mistakes yolo=off window=firstmate:fm-muse-allowlist-allowed-x1 worktree=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/wt'
++ local expected=0 actual=0 'label=Muse allowed credential must remain usable: warning: /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/data/muse-allowlist-allowed-x1/launch-brief.md records no ship branch; defaulting to legacy branch fm/muse-allowlist-allowed-x1
+warning: /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/home/data/muse-allowlist-allowed-x1/launch-brief.md records no delivery contract line (scaffolded before ship briefs recorded one); launching on the explicit --mode no-mistakes - confirm its definition of done matches
+spawned muse-allowlist-allowed-x1 harness=muse kind=ship mode=no-mistakes yolo=off window=firstmate:fm-muse-allowlist-allowed-x1 worktree=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-allowed/wt'
++ '[' 0 = 0 ']'
++ for setting in withheld allowed stored
+++ make_spawn_case allowlist-stored
+++ local name=allowlist-stored case_dir home proj wt fakebin id
+++ case_dir=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored
+++ home=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home
+++ proj=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project
+++ wt=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/wt
++++ make_spawn_fakebin /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake
++++ local dir=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake fakebin
+++++ fm_fakebin /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake
+++++ local dir=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake fakebin=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin
+++++ mkdir -p /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin
+++++ printf '%s\n' /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin
++++ fakebin=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin
++++ cat
++++ chmod +x /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin/tmux
+++++ command -v bash
++++ cp /bin/bash /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin/muse-bin-test-version
++++ cat
++++ chmod +x /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin/muse
++++ fm_fake_exit0 /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin treehouse gh-axi gh
++++ local fakebin=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin tool
++++ shift
++++ for tool in '"$@"'
++++ cat
++++ chmod +x /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin/treehouse
++++ for tool in '"$@"'
++++ cat
++++ chmod +x /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin/gh-axi
++++ for tool in '"$@"'
++++ cat
++++ chmod +x /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin/gh
++++ printf '%s\n' /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin
+++ fakebin=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin
+++ id=muse-allowlist-stored-x1
+++ mkdir -p /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/data/muse-allowlist-stored-x1 /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/projects /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/state /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/config /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/xdgconfig /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/xdgdata
+++ cat
+++ fm_git_worktree /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/wt fm/muse-allowlist-stored-x1
+++ local repo=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project worktree=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/wt branch=fm/muse-allowlist-stored-x1
+++ fm_git_init_commit /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project
+++ local dir=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project
+++ mkdir -p /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project
+++ git -C /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project init -q -b main
++++ basename /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project
+++ printf '# %s\n' project
+++ git -C /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project add README.md
+++ git -C /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project -c 'user.name=Firstmate Tests' -c user.email=tests@example.invalid commit -qm initial
+++ fm_git_add_origin /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project.origin.git
+++ local repo=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project remote=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project.origin.git remote_abs
+++ git clone --quiet --bare /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project.origin.git
++++ cd /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project.origin.git
++++ pwd
+++ remote_abs=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project.origin.git
+++ git -C /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project remote add origin file:///private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project.origin.git
+++ git -C /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project worktree add --quiet -b fm/muse-allowlist-stored-x1 /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/wt
+++ touch /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/state/.last-watcher-beat
+++ printf '%s\n' '/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/wt|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin|muse-allowlist-stored-x1'
++ rec='/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/wt|/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin|muse-allowlist-stored-x1'
++ IFS='|'
++ read -r case_dir home proj wt fakebin id
++ :
++ case "$setting" in
++ mkdir -p /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/xdgconfig/muse
++ printf '{"schema_version":1}\n'
+++ run_muse_spawn /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/wt /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin muse-allowlist-stored-x1 --mode no-mistakes --yolo off
+++ local home=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home proj=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project wt=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/wt fakebin=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin id=muse-allowlist-stored-x1
+++ shift 5
+++ FM_ROOT_OVERRIDE=
+++ FM_HOME=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home
+++ FM_STATE_OVERRIDE=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/state
+++ FM_DATA_OVERRIDE=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/data
+++ FM_PROJECTS_OVERRIDE=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/projects
+++ FM_CONFIG_OVERRIDE=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/config
+++ FM_SPAWN_NO_GUARD=1
+++ FM_FAKE_PANE_PATH=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/wt
+++ TMUX=fake,1,0
+++ FM_FAKE_LAUNCH_LOG=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/launch.log
+++ FM_FAKE_MUSE_EXECUTABLE=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin/muse
+++ FM_FAKE_MUSE_VERSIONED=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin/muse-bin-test-version
+++ FM_FAKE_HARNESS_PROBE=/Users/christian/.no-mistakes/worktrees/c74c3d72ba26/01M3N30BCPNWYDM351D2ZGG6XF/bin/fm-harness.sh
+++ FM_FAKE_EXECUTE_MUSE_LAUNCH=
+++ FM_FAKE_HARNESS_RESULT=
+++ FM_FAKE_WORKER_META_KEY=present
+++ META_API_KEY=test-key
+++ XDG_CONFIG_HOME=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/xdgconfig
+++ XDG_DATA_HOME=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/xdgdata
+++ PATH=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/fake/fakebin:/Users/christian/.cargo/bin:/Users/christian/.bun/bin:/Users/christian/.railway/bin:/Users/christian/.iterm2:/Users/christian/.antigravity/antigravity/bin:/Users/christian/.local/node/bin:/Users/christian/.local/bin:/Library/Frameworks/Python.framework/Versions/3.12/bin:/opt/homebrew/opt/python@3.12/libexec/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/christian/.codex/packages/standalone/releases/0.155.1-aarch64-apple-darwin/codex-path:/Users/christian/bin:/Users/christian/.grok/bin:/Users/christian/.local/bin:/Users/christian/.local/bin:/Users/christian/.local/bin:/Users/christian/.local/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/opt/homebrew/bin:/Users/christian/.cargo/bin:/Users/christian/.bun/bin:/Users/christian/.railway/bin:/Users/christian/.iterm2:/Users/christian/.antigravity/antigravity/bin:/Users/christian/.local/node/bin:/Users/christian/.local/bin:/Library/Frameworks/Python.framework/Versions/3.12/bin:/opt/homebrew/opt/python@3.12/libexec/bin:/opt/homebrew/sbin:/Users/christian/.codex/tmp/arg0/codex-arg0HNICax:/Users/christian/.codex/packages/standalone/releases/0.155.1-aarch64-apple-darwin/codex-path:/Users/christian/bin:/Users/christian/.grok/bin:/Users/christian/.claude-acct6/plugins/cache/typesafe-ai/typesafe/0.5.7/bin:/Users/christian/.claude-acct6/skills/humanizer/bin:/Users/christian/firstmate/.claude/skills/firstmate-calm/bin:/Users/christian/go/bin:/usr/local/sbin
+++ /Users/christian/.no-mistakes/worktrees/c74c3d72ba26/01M3N30BCPNWYDM351D2ZGG6XF/bin/fm-spawn.sh muse-allowlist-stored-x1 /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/project muse --mode no-mistakes --yolo off
++ out='warning: /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/data/muse-allowlist-stored-x1/launch-brief.md records no ship branch; defaulting to legacy branch fm/muse-allowlist-stored-x1
+warning: /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/data/muse-allowlist-stored-x1/launch-brief.md records no delivery contract line (scaffolded before ship briefs recorded one); launching on the explicit --mode no-mistakes - confirm its definition of done matches
+spawned muse-allowlist-stored-x1 harness=muse kind=ship mode=no-mistakes yolo=off window=firstmate:fm-muse-allowlist-stored-x1 worktree=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/wt'
++ status=0
++ '[' stored = withheld ']'
++ expect_code 0 0 'Muse stored credential must remain usable: warning: /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/data/muse-allowlist-stored-x1/launch-brief.md records no ship branch; defaulting to legacy branch fm/muse-allowlist-stored-x1
+warning: /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/data/muse-allowlist-stored-x1/launch-brief.md records no delivery contract line (scaffolded before ship briefs recorded one); launching on the explicit --mode no-mistakes - confirm its definition of done matches
+spawned muse-allowlist-stored-x1 harness=muse kind=ship mode=no-mistakes yolo=off window=firstmate:fm-muse-allowlist-stored-x1 worktree=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/wt'
++ local expected=0 actual=0 'label=Muse stored credential must remain usable: warning: /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/data/muse-allowlist-stored-x1/launch-brief.md records no ship branch; defaulting to legacy branch fm/muse-allowlist-stored-x1
+warning: /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/home/data/muse-allowlist-stored-x1/launch-brief.md records no delivery contract line (scaffolded before ship briefs recorded one); launching on the explicit --mode no-mistakes - confirm its definition of done matches
+spawned muse-allowlist-stored-x1 harness=muse kind=ship mode=no-mistakes yolo=off window=firstmate:fm-muse-allowlist-stored-x1 worktree=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/allowlist-stored/wt'
++ '[' 0 = 0 ']'
++ pass 'Muse preflight respects the allowlist while retaining stored authentication'
++ printf 'ok - %s\n' 'Muse preflight respects the allowlist while retaining stored authentication'
+ok - Muse preflight respects the allowlist while retaining stored authentication
++ test_detects_versioned_process_ancestor
++ local dir bin out
++ dir=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/detect
++ mkdir -p /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/detect
++ for bin in muse-bin-0.1.0-R708.1 muse-bin-9.9.9-RZZZ.9 muse
+++ command -v bash
++ cp /bin/bash /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/detect/muse-bin-0.1.0-R708.1
+++ env -u CLAUDECODE -u PI_CODING_AGENT -u FM_PI_HARNESS -u GROK_AGENT -u CURSOR_AGENT -u CURSOR_INVOKED_AS -u GEMINI_CLI /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA/detect/muse-bin-0.1.0-R708.1 -c 'r=$("/Users/christian/.no-mistakes/worktrees/c74c3d72ba26/01M3N30BCPNWYDM351D2ZGG6XF/bin/fm-harness.sh"); printf '\''%s'\'' "$r"'
++ out=
++ '[' '' = muse ']'
++ fail 'fm-harness.sh under process '\''muse-bin-0.1.0-R708.1'\'' reported '\'''\'', expected muse'
++ printf 'not ok - %s\n' 'fm-harness.sh under process '\''muse-bin-0.1.0-R708.1'\'' reported '\'''\'', expected muse'
+not ok - fm-harness.sh under process 'muse-bin-0.1.0-R708.1' reported '', expected muse
++ exit 1
++ fm_test_cleanup
++ local d
++ fm_test_reap_watchers
++ local state lock_home 'seen=
+'
++ '[' -f /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//.fm-test-watcher.32454.6oIWlH ']'
++ IFS=
++ read -r state
++ rm -f /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//.fm-test-watcher.32454.6oIWlH
++ fm_test_reap_procevent_homes
++ local home claim_root 'seen=
+'
++ '[' -f /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//.fm-test-procevent.32454.Rkwh61 ']'
++ IFS='	'
++ read -r home claim_root
++ rm -f /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//.fm-test-procevent.32454.Rkwh61
++ for d in '"${FM_TEST_CLEANUP_DIRS[@]:-}"'
++ '[' -n '' ']'
++ '[' -f /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//.fm-test-cleanup.32454.eABdWk ']'
++ IFS=
++ read -r d
++ '[' -n /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA ']'
++ fm_test_remove_tree /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA
++ local dir=/private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA
++ '[' -d /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA ']'
++ '[' '!' -L /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA ']'
++ find /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA -type d -exec chmod u+rwx '{}' +
++ rm -rf /private/var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T/fm-muse-harness.Y1pOUA
++ IFS=
++ read -r d
++ rm -f /var/folders/qr/gynxkmc55psgj4mlvjpn21wr0000gp/T//.fm-test-cleanup.32454.eABdWk

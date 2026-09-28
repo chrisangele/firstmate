@@ -1,0 +1,16 @@
+muse accepted => allow
+muse plain => refuse
+muse unset => refuse
+gemini accepted => allow
+gemini plain => refuse
+gemini unset => refuse
+agy accepted => allow
+agy plain => refuse
+agy unset => refuse
+rovo accepted => refuse
+rovo plain => refuse
+rovo unset => refuse
+devin accepted => refuse
+devin plain => refuse
+devin unset => refuse
+cwd-only => refuse
