@@ -183,10 +183,13 @@ test_unverified_secondmate_flag_is_scoped_to_one_named_home() {
   FM_HOME="$home_with" fm_control_harness_supports_kind agy secondmate \
     || fail "agy was refused in the very home whose flag accepts it"
 
-  # rovo is the deliberate carve-out: it carries the same supervision gap and is
-  # excluded on purpose, so the flag must never widen it alongside the others.
+  # rovo and devin are the deliberate carve-outs: they carry the same supervision
+  # gap and are excluded on purpose, so the flag must never widen them alongside
+  # the others.
   FM_HOME="$home_with" fm_control_harness_supports_kind rovo secondmate \
     && fail "rovo was widened by a flag that must never cover it" || true
+  FM_HOME="$home_with" fm_control_harness_supports_kind devin secondmate \
+    && fail "devin was widened by a flag that must never cover it" || true
 
   # Non-vacuity: the flag is not a blanket yes. The kinds agy already runs must
   # be unaffected by it, or the three assertions above would pass on a gate that
