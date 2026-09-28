@@ -795,7 +795,8 @@ For omp secondmate launches, `fm-spawn.sh` passes no `-e` at all: omp auto-disco
 
 ## Unverified secondmate harness (config/unverified-secondmate-harness)
 
-The optional local, gitignored `config/unverified-secondmate-harness` records the captain's written acceptance, for the launching parent home only, of a secondmate on an adapter that is not verified for that kind.
+The optional local, gitignored `config/unverified-secondmate-harness` records the captain's written acceptance, for the launching parent home only, of a local secondmate on an adapter that is not verified for that kind.
+This exception is LOCAL-ONLY: it does not cover remote secondmate routes, their host-side launches, or their relaunch gates.
 Only the file's presence is read; its contents are ignored.
 It widens muse, gemini, and agy alone, never rovo or devin, in both `bin/fm-spawn.sh` and the `bin/fm-control-lib.sh` capability predicate the control plane asks before it stops anything, so the launch owner and the relaunch gate cannot disagree about what may start.
 A launch it permits prints a warning naming the accepted risk instead of proceeding silently.

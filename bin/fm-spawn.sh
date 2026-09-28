@@ -938,6 +938,13 @@ spawn_remote_secondmate() {
     fm_lock_release "$registry_lock" || true
     fm_lock_release "$SPAWN_TASK_LOCK" || true
     echo "error: remote secondmate spawn requires a verified harness adapter, not a raw launch command: $harness" >&2
+    case "$harness" in
+    muse | gemini | agy)
+      if [ -n "${FM_HOME:-}" ] && [ -f "$FM_HOME/config/unverified-secondmate-harness" ]; then
+        echo "error: the unverified-secondmate exception covers local secondmates only; it does not permit remote $harness secondmates" >&2
+      fi
+      ;;
+    esac
     return 1
     ;;
   esac
