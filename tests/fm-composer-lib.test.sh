@@ -431,7 +431,7 @@ test_matrix_muse_13_titled_rule_composer() {
 
 test_matrix_muse_idle_hint_row_is_furniture() {
   # Muse rotates hints from its own tip catalogue around an empty composer.
-  # Drawn at normal intensity, they survive ghost stripping, so a bare
+  # The 1.3 muted foreground survives fleet ghost stripping, so a bare
   # composer's wrap region used to swallow one and report an idle pane
   # `pending` - which is what skipped three doorbells on a live muse mate on
   # 2026-09-18, leaving durable steers unrung until the mate's own cycle read
@@ -455,6 +455,37 @@ test_matrix_muse_idle_hint_row_is_furniture() {
   assert_screen "a hint row inside muse 1.3's composer is furniture" empty \
     "$CAPS_STYLED_NOID" "$rule"$'\n'"$glyph"$'\n'"$hint"$'\n'"$bottom"$'\n'"$statusrow"
 
+  hint='Use /compact to summarize the conversation'
+  assert_screen "an arbitrary muted Muse tip bounds the wrap region" empty \
+    "$CAPS_STYLED_NOID" "$glyph"$'\n'"${ESC}[38;2;138;144;152m${hint}${ESC}[0m"
+  assert_screen "a dim arbitrary Muse tip bounds the wrap region" empty \
+    "$CAPS_STYLED_NOID" "$glyph"$'\n'"${ESC}[2m${hint}${ESC}[0m"
+  assert_screen "Muse 1.4 muted foreground bounds the wrap region" empty \
+    "$CAPS_STYLED_NOID" "$glyph"$'\n'"${ESC}[38;2;103;108;116m${hint}${ESC}[0m"
+  assert_screen "colon truecolor Muse hint bounds the wrap region" empty \
+    "$CAPS_STYLED_NOID" "$glyph"$'\n'"${ESC}[38:2::138:144:152m${hint}${ESC}[0m"
+  assert_screen "normal intensity after dim stays pending" pending \
+    "$CAPS_STYLED_NOID" "$glyph"$'\n'"${ESC}[2m${hint}${ESC}[22m draft"
+  assert_screen "default foreground after muted stays pending" pending \
+    "$CAPS_STYLED_NOID" "$glyph"$'\n'"${ESC}[38;2;138;144;152m${hint}${ESC}[39m draft"
+  assert_screen "cursor on bright hint-looking continuation stays pending" pending \
+    "$CAPS_TMUX" "$glyph"$'\n'"${ESC}[97mType @ to search and insert workspace file paths${ESC}[0m" 1
+  assert_screen "cursor on muted furniture is not a proven composer" unknown \
+    "$CAPS_TMUX" "$glyph"$'\n'"${ESC}[38;2;138;144;152m${hint}${ESC}[0m" 1
+  out=$(fm_composer_extract_selected_content "$CAPS_STYLED_NOID" \
+    "$glyph"$'\n'"${ESC}[38;2;138;144;152m${hint}${ESC}[0m")
+  [ -z "$out" ] || fail "extraction must exclude muted furniture, got '$out'"
+  assert_screen "a plain Muse tip never proves empty" unknown \
+    "$CAPS_PLAIN" '❯'$'\n'"$hint"
+  assert_screen "a plain known Muse hint never proves empty" unknown \
+    "$CAPS_PLAIN" '❯'$'\n''Type @ to search and insert workspace file paths'
+  assert_screen "mixed muted and bright text stays pending" pending \
+    "$CAPS_STYLED_NOID" "$glyph"$'\n'"${ESC}[38;2;138;144;152m${hint}${ESC}[97m draft${ESC}[0m"
+  out=$(fm_composer_extract_selected_content "$CAPS_STYLED_NOID" \
+    "$glyph"$'\n'"${ESC}[97mType @ to search and insert workspace file paths${ESC}[0m")
+  [ "$out" = 'Type @ to search and insert workspace file paths' ] \
+    || fail "extraction must preserve bright hint-looking input, got '$out'"
+
   # The dangerous direction: a wrapped row that is NOT a hint is typed input
   # and must still read pending.
   assert_screen "a wrapped row that is not a hint stays pending" pending \
@@ -462,7 +493,7 @@ test_matrix_muse_idle_hint_row_is_furniture() {
   assert_screen "a fleet placeholder prefix in bright wrapped input stays pending" pending \
     "$CAPS_STYLED_NOID" "$glyph"$'\n'"${ESC}[97mAsk anything... please investigate${ESC}[0m"
   for hint in 'Type @ to search and insert workspace file paths' '/loop 10m <prompt> schedules a recurring prompt'; do
-    assert_screen "a whole Muse hint bounds the wrap region" empty \
+    assert_screen "bright text equal to a Muse hint stays pending" pending \
       "$CAPS_STYLED_NOID" "$glyph"$'\n'"${ESC}[97m${hint}${ESC}[0m"
     assert_screen "a Muse hint with appended draft text stays pending" pending \
       "$CAPS_STYLED_NOID" "$glyph"$'\n'"${ESC}[97m${hint} please investigate${ESC}[0m"
@@ -470,7 +501,7 @@ test_matrix_muse_idle_hint_row_is_furniture() {
   out=$(FM_COMPOSER_IDLE_RE='^Ask anything.*$' fm_composer_classify_screen \
     "$CAPS_STYLED_NOID" "$glyph"$'\n'"${ESC}[97mAsk anything... please investigate${ESC}[0m")
   [ "$out" = pending ] || fail "fleet placeholder overrides must not bound wrapped input, got '$out'"
-  pass "matrix: whole Muse hints bound the wrap region; real wrapped input still reads pending"
+  pass "matrix: muted Muse rendering bounds the wrap region; bright and plain input never read empty"
 }
 
 test_matrix_cursor_reverse_video_placeholder_remnant() {

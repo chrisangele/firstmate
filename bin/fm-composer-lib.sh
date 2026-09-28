@@ -63,9 +63,8 @@
 #                rows beneath the glyph row) is bounded by blank rows, by
 #                structural edges, and by the FURNITURE rows a harness draws
 #                directly below its composer - omp's status row,
-#                braille-only animation rows, and a row that is nothing but
-#                one of the two whole-row Muse hints declared below in
-#                FM_COMPOSER_MUSE_HINT_RE. Fleet placeholder matches and
+#                braille-only animation rows, and entirely muted Muse hint
+#                rows below an empty ❯ glyph. Fleet placeholder matches and
 #                FM_COMPOSER_IDLE_RE overrides do not bound this region.
 #   left-bar   - opencode: rows prefixed by a heavy left bar `┃` with no
 #                closing border, holding the idle hint, blank rows, and a
@@ -276,8 +275,10 @@ fm_composer_normalize_trim_var() {  # <varname>
 # codes are processed left to right within a sequence, so "ESC[0;2m" reads as dim.
 # LC_ALL=C makes awk walk bytes, so multibyte glyphs (e.g. ❯) and de-emphasised
 # runs alike pass through or drop intact without locale-dependent classes.
+# The optional muse-hint mode reuses SGR parsing for the wrap boundary only:
+# dim or exact Muse muted foregrounds, never a widened fleet luma threshold.
 fm_composer_strip_ghost() {
-  LC_ALL=C awk -v lumamax="${FM_COMPOSER_GHOST_LUMA_MAX:-128}" '
+  LC_ALL=C awk -v mode="${1:-ghost}" -v lumamax="${FM_COMPOSER_GHOST_LUMA_MAX:-128}" '
     function sgr_code(v, b) {
       b = v
       sub(/:.*/, "", b)
@@ -294,20 +295,24 @@ fm_composer_strip_ghost() {
       if (code == "2") return p + 4
       return p + 1
     }
-    # fg38_is_dark: 1 when the SGR 38 foreground starting at param p is a
-    # TRUECOLOR (38;2 / 38:2) whose luminance is below lumamax; 0 otherwise
-    # (a 38;5 palette colour, a bright truecolor, or a malformed run).
+    function muted_foreground(r, g, b, lumamax) {
+      if (mode == "muse-hint")
+        return (r == 138 && g == 144 && b == 152) || (r == 103 && g == 108 && b == 116)
+      return (299*r + 587*g + 114*b) / 1000 < lumamax
+    }
+    # Recognize a truecolor foreground using the selected stripping mode;
+    # palette colours and malformed runs are kept as potentially real text.
     function fg38_is_dark(a, p, k, lumamax,   spec, nf, f, r, g, b) {
       spec = a[p]
       if (index(spec, ":") > 0) {           # colon form: whole colour in a[p]
         nf = split(spec, f, ":")
         if (f[2] != "2" || nf < 5) return 0
         r = f[nf - 2] + 0; g = f[nf - 1] + 0; b = f[nf] + 0
-        return ((299*r + 587*g + 114*b) / 1000 < lumamax) ? 1 : 0
+        return muted_foreground(r, g, b, lumamax)
       }
       if (p + 1 > k || a[p + 1] != "2" || p + 4 > k) return 0
       r = a[p + 2] + 0; g = a[p + 3] + 0; b = a[p + 4] + 0
-      return ((299*r + 587*g + 114*b) / 1000 < lumamax) ? 1 : 0
+      return muted_foreground(r, g, b, lumamax)
     }
     {
       line = $0; out = ""; dim = 0; darkfg = 0; n = length(line); i = 1
@@ -485,18 +490,10 @@ FM_COMPOSER_SHELL_PROMPT_GLYPHS=$(printf '%s\n' '>' '$' '%' '#')
 # 2026.08.11-e8db854). Devin renders the anchored `Ask Devin to build features,
 # fix bugs, or work on your code` as dim text after its `❭` glyph (verified
 # live, devin 3000.11.1).
-# Muse rotates hints from its own tip catalogue around an
-# empty composer, and the two entries here are the ones seen unrung on a live
-# muse mate; they are taken byte-for-byte from the installed Muse 1.3.0-R3401.1
-# binary's catalogue, which is the same source the pane renders from. That
-# catalogue holds roughly twenty entries, so an unrecognized hint can still
-# read pending. Widening this set also accepts matching human input as empty;
-# keep additions deliberate. Live evidence: docs/verification/runtime-backends.md.
-# The two Muse hints also bound a bare composer's wrap region through
-# _fm_composer_row_is_idle_hint. FM_COMPOSER_IDLE_RE overrides only the
+# Muse's two recorded hints remain placeholder candidates; the wrap boundary
+# below uses rendering, not catalogue text. FM_COMPOSER_IDLE_RE overrides only
 # idle-placeholder decisions; matching is case-insensitive.
-FM_COMPOSER_MUSE_HINT_RE='^Type @ to search and insert workspace file paths$|^/loop 10m <prompt> schedules a recurring prompt$'
-FM_COMPOSER_IDLE_RE_DEFAULT='^Type a message\.\.\.$|^Ask anything(\.\.\.|…)|^Plan, search, build anything$|^Add a follow-up$|^Ask Devin to build features, fix bugs, or work on your code$|'"$FM_COMPOSER_MUSE_HINT_RE"
+FM_COMPOSER_IDLE_RE_DEFAULT='^Type a message\.\.\.$|^Ask anything(\.\.\.|…)|^Plan, search, build anything$|^Add a follow-up$|^Ask Devin to build features, fix bugs, or work on your code$|^Type @ to search and insert workspace file paths$|^/loop 10m <prompt> schedules a recurring prompt$'
 
 # Opencode draws a mode/model footer line INSIDE its left-bar composer
 # ("Build · GPT-5.5 Fast OpenAI · high"). It is composer furniture, not typed
@@ -1280,15 +1277,21 @@ _fm_composer_row_is_pi_status() {  # <trimmed-row>
   fm_composer_idle_matches "$1" "$FM_COMPOSER_PI_STATUS_RE_DEFAULT" sensitive
 }
 
-# _fm_composer_row_is_idle_hint: 0 when the WHOLE trimmed row is one of the
-# two Muse 1.3 hints (FM_COMPOSER_MUSE_HINT_RE above). Muse draws them at
-# normal intensity on their own rows below the prompt glyph, bounding a bare
-# composer's wrap region independently of the fleet placeholder override.
-_fm_composer_row_is_idle_hint() {  # <row>
-  local row=$1
-  fm_composer_normalize_trim_var row
-  [ -n "$row" ] || return 1
-  fm_composer_idle_matches "$row" "$FM_COMPOSER_MUSE_HINT_RE" insensitive
+# _fm_composer_row_is_muse_hint: a nonblank row below an empty ❯ whose
+# visible text is entirely dim or Muse-muted foreground is furniture.
+# Muse 1.3 uses 138;144;152; live 1.4 uses that for its title and 103;108;116
+# for its inline tip. Bright/mixed text and unstyled captures never qualify.
+_fm_composer_row_is_muse_hint() {  # <raw-row> <plain-glyph-row> <styled>
+  local row=$1 prompt=$2 rest
+  [ "$3" = 1 ] || return 1
+  fm_composer_normalize_trim_var prompt
+  [ "$prompt" = '❯' ] || return 1
+  rest=$(printf '%s\n' "$row" | fm_composer_strip_ansi)
+  fm_composer_normalize_trim_var rest
+  [ -n "$rest" ] || return 1
+  rest=$(printf '%s\n' "$row" | fm_composer_strip_ghost muse-hint)
+  fm_composer_normalize_trim_var rest
+  [ -z "$rest" ]
 }
 
 # _fm_composer_row_is_braille_furniture: 0 when the row is non-blank and its
@@ -1324,8 +1327,9 @@ _fm_composer_bare_row_strip_furniture_var() {  # <varname>
 # through <cursor-row> is non-blank and carries no structural edge - the
 # contiguity proof that those rows are the bare composer's wrapped input
 # rather than unrelated screen content.
-_fm_composer_wrap_region_ok() {  # <plain-screen> <glyph-row> <cursor-row>
-  local plain=$1 g=$2 cy=$3 row line trimmed glyph
+_fm_composer_wrap_region_ok() {  # <plain-screen> <glyph-row> <cursor-row> <screen> <styled>
+  local plain=$1 g=$2 cy=$3 screen=$4 styled=$5 row line trimmed glyph prompt
+  prompt=$(_fm_composer_screen_row "$g" "$plain")
   row=$((g + 1))
   while [ "$row" -le "$cy" ]; do
     line=$(_fm_composer_screen_row "$row" "$plain")
@@ -1335,7 +1339,7 @@ _fm_composer_wrap_region_ok() {  # <plain-screen> <glyph-row> <cursor-row>
     if fm_composer_row_has_edge "$trimmed"; then return 1; fi
     if _fm_composer_row_is_omp_status "$trimmed"; then return 1; fi
     if _fm_composer_row_is_braille_furniture "$trimmed"; then return 1; fi
-    if _fm_composer_row_is_idle_hint "$trimmed"; then return 1; fi
+    if _fm_composer_row_is_muse_hint "$(_fm_composer_screen_row "$row" "$screen")" "$prompt" "$styled"; then return 1; fi
     if fm_composer_leading_shell_glyph_var glyph "$trimmed"; then return 1; fi
     row=$((row + 1))
   done
@@ -1512,7 +1516,7 @@ _fm_composer_locate_footer_zone() {  # <plain>
 }
 
 _fm_composer_select_cursorless() {
-  local plain=$1 generic=-1 next boundary raw trimmed glyph bare footer=0
+  local plain=$1 screen=$2 styled=$3 generic=-1 next boundary raw trimmed glyph bare footer=0 prompt
   FM_COMPOSER_SELECTED_KIND=
   FM_COMPOSER_SELECTED_FIRST=-1
   FM_COMPOSER_SELECTED_LAST=-1
@@ -1574,6 +1578,7 @@ _fm_composer_select_cursorless() {
     return 1
   fi
   if [ "$FM_COMPOSER_SELECTED_KIND" = bare ]; then
+    prompt=$(_fm_composer_screen_row "$FM_COMPOSER_SELECTED_FIRST" "$plain")
     next=$((FM_COMPOSER_SELECTED_LAST + 1))
     while :; do
       raw=$(_fm_composer_screen_row "$next" "$plain")
@@ -1583,7 +1588,7 @@ _fm_composer_select_cursorless() {
       fm_composer_row_has_edge "$trimmed" && break
       _fm_composer_row_is_omp_status "$trimmed" && break
       _fm_composer_row_is_braille_furniture "$trimmed" && break
-      _fm_composer_row_is_idle_hint "$trimmed" && break
+      _fm_composer_row_is_muse_hint "$(_fm_composer_screen_row "$next" "$screen")" "$prompt" "$styled" && break
       FM_COMPOSER_SELECTED_LAST=$next
       next=$((next + 1))
     done
@@ -1631,7 +1636,7 @@ $caps
 EOF
   plain=$(printf '%s\n' "$screen" | fm_composer_strip_ansi)
   _fm_composer_scan_screen "$plain" '' 1
-  _fm_composer_select_cursorless "$plain" || return 1
+  _fm_composer_select_cursorless "$plain" "$screen" "$styled" || return 1
   row=$FM_COMPOSER_SELECTED_FIRST
   while [ "$row" -le "$FM_COMPOSER_SELECTED_LAST" ]; do
     raw=$(_fm_composer_screen_row "$row" "$screen")
@@ -1749,7 +1754,7 @@ EOF
     # not apply and a swallowed Enter on a long message still reads pending
     # and earns its retry.
     if [ "$FM_COMPOSER_SCAN_BARE_ROW" -ge 0 ] && [ "$cy" -gt "$FM_COMPOSER_SCAN_BARE_ROW" ] \
-       && _fm_composer_wrap_region_ok "$plain" "$FM_COMPOSER_SCAN_BARE_ROW" "$cy"; then
+       && _fm_composer_wrap_region_ok "$plain" "$FM_COMPOSER_SCAN_BARE_ROW" "$cy" "$screen" "$styled"; then
       _fm_composer_classify_bare_wrap "$screen" "$styled" "$FM_COMPOSER_SCAN_BARE_ROW" "$cy"
       return 0
     fi
@@ -1771,7 +1776,7 @@ EOF
   # No cursor: the bottom-most shape wins, with the pi-separator staleness
   # rules layered on (a live pi composer pair below the generic candidate
   # proves that candidate stale).
-  if ! _fm_composer_select_cursorless "$plain"; then
+  if ! _fm_composer_select_cursorless "$plain" "$screen" "$styled"; then
     printf 'unknown'
     return 0
   fi
